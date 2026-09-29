@@ -1,33 +1,44 @@
 
 package bankaccount;
 
-import java.util.Scanner;
-
 public class BankAccount {
+    private String accountName;
+    private double balance;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String name = sc.nextLine();
-        double balance = Double.parseDouble(sc.nextLine());
-        accountName ac = new accountName(name,balance);
-        
-        boolean check = true;
-        while(check){
-            String change = sc.nextLine();
-            String[] a = change.split(" ");
-            if(a[0].equals("deposit")){
-                double amount = Double.parseDouble(a[1]);
-                ac.deposit(amount);
-            }
-            if(a[0].equals("withdraw")){
-                double amount = Double.parseDouble(a[1]);
-                ac.withdraw(amount);
-            }
-            if(a[0].equals("display")){
-                ac.display();
-                break;
-            }
+    public BankAccount() {
+    }
+
+    public BankAccount(String accountName, double balance) {
+        this.accountName = accountName;
+        this.balance = balance;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+    
+    public void deposit(double amount){
+        if(amount > 0){
+            this.balance += amount; 
         }
     }
     
+    public void withdraw(double amount){
+        if(amount > 0 && amount <= balance ){
+            this.balance -= amount;
+        }
+    }
+    
+    public void display(){
+        System.out.println("Account Name: " + accountName);
+        System.out.println("Balance: " + balance);
+    }
 }
