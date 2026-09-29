@@ -37,7 +37,7 @@ public class BankAccount {
         }
     }
     
-    public void display(){
+    public void displayInfo(){
         System.out.println("Account Name: " + accountName);
         System.out.println("Balance: " + balance);
     }
